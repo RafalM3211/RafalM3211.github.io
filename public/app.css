@@ -5,6 +5,7 @@ body{
     --light: rgb(252, 234, 208);
     --dark: rgb(100 67 15);
 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     font-size: 1rem;
     background-color: var(--primary);
@@ -38,24 +39,45 @@ body{
 
 .root{
     margin: 50px auto;
-    height: 150px;
+    height: min-content;
     position: relative;
     width: min-content;
+
+    --canvas-width: 150px;
+    --canvas-height: 100px;
 }
 
 .root-input::-webkit-inner-spin-button,
 .root-input::-webkit-outer-spin-button{
     -webkit-appearance: none;
+    margin: 0;
 }
 
 .root-input{
+    -moz-appearance: textfield;
     background-color: var(--light);
     color: var(--dark);
     border: none;
     border-radius: 5px;
-    padding: 5px;
+    padding: 6px;
+    position: absolute;
+    width: 0.8em;
+    text-align: center;
 }
 
 .root-input:focus{
-    outline-color: var(--font);
+    outline: none;
+}
+
+.index{
+    font-size: 1em;
+    padding-bottom: 1px;
+    bottom: calc( var(--canvas-height)*0.56 );  /* 50% of height + padding + stroke width */
+    left: calc( var(--canvas-width)*0.1 );
+}
+
+.radicant{
+    font-size: 3.5em;
+    bottom: 0px;  /* stroke width */
+    right: calc( var(--canvas-width)*0.03 );
 }

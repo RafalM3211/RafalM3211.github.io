@@ -14,7 +14,7 @@ export function drawRoot(canvas: HTMLCanvasElement, additionalWidthLeft: number=
     ctx.lineTo(40, height*0.5);
     ctx.lineTo(60, height);
     ctx.lineTo(80, 5);
-    ctx.lineTo(130+additionalWidthRight, 5);
+    ctx.lineTo(width+additionalWidthRight, 5);
 
     ctx.stroke();
 }
