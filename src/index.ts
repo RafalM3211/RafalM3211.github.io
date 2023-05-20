@@ -1,4 +1,6 @@
-import { rootIndex } from "./selectors.js";
+import { rootIndex, rootCanvas } from "./selectors.js";
+import {drawRoot} from "./rootCanvas.js";
 
+drawRoot(rootCanvas);
 
 console.log("hello world");
