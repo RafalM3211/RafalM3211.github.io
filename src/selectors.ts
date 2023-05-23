@@ -1,3 +1,5 @@
-export const rootCanvas=document.querySelector("#root-canvas") as HTMLCanvasElement;
-export const rootIndex=document.querySelector(".index") as HTMLInputElement;
-export const rootRadicant=document.querySelector(".radicant") as HTMLInputElement;
+import type { HTMLRootCanvasElement } from "./rootCanvas"
+
+export const rootCanvas=document.querySelector("#root-canvas") as HTMLRootCanvasElement;
+export const indexInput=document.querySelector(".index") as HTMLInputElement;
+export const radicantInput=document.querySelector(".radicant") as HTMLInputElement;

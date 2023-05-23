@@ -1,3 +1,3 @@
 export const rootCanvas = document.querySelector("#root-canvas");
-export const rootIndex = document.querySelector(".index");
-export const rootRadicant = document.querySelector(".radicant");
+export const indexInput = document.querySelector(".index");
+export const radicantInput = document.querySelector(".radicant");

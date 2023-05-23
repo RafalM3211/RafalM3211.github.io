@@ -78,6 +78,6 @@ body{
 
 .radicant{
     font-size: 3.5em;
-    bottom: 0px;  /* stroke width */
-    right: calc( var(--canvas-width)*0.03 );
+    bottom: 0;  /* stroke width */
+    right: 0;
 }
