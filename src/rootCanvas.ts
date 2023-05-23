@@ -1,8 +1,6 @@
-const contextIsNullError=new Error("root canvas context is null")
+import type { HTMLRootCanvasElement } from "./types";
 
-export interface HTMLRootCanvasElement extends HTMLCanvasElement{
-    ["data-min-width"]: number;
-} 
+const contextIsNullError=new Error("root canvas context is null")
 
 export function drawRoot(canvas: HTMLRootCanvasElement){
     const width=canvas.width;
