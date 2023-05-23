@@ -71,7 +71,8 @@ body{
 
 .index{
     font-size: 1em;
-    padding-bottom: 1px;
+    padding: 6px 1px 1px 1px;
+    width: 3ch;
     bottom: calc( var(--canvas-height)*0.56 );  /* 50% of height + padding + stroke width */
     left: calc( var(--canvas-width)*0.1 );
 }
