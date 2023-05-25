@@ -6,4 +6,3 @@ radicantInput.addEventListener("keydown", e => {
 });
 indexInput.addEventListener("keydown", e => {
 });
-console.log("hello world");

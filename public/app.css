@@ -37,11 +37,26 @@ body{
 }
 
 
+
+.calculator-container{
+    margin-top: 50px;
+    display: flex;
+    align-items: center
+}
+
+.equal-sign{
+    margin: 0 40px;
+}
+.equal-sign path{
+    fill: var(--dark);
+}
+
 .root{
-    margin: 50px auto;
+    margin-left: 50px;
     height: min-content;
     position: relative;
     width: min-content;
+    
 
     --canvas-width: 150px;
     --canvas-height: 100px;
@@ -80,5 +95,6 @@ body{
 .radicant{
     font-size: 3.5em;
     bottom: 0;  /* stroke width */
-    right: 0;
+    left: 80px;
+    transition: all 0.1s linear;
 }

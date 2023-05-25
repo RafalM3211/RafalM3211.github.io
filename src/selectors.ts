@@ -1,4 +1,4 @@
-import type { HTMLRootCanvasElement } from "./rootCanvas"
+import type { HTMLRootCanvasElement } from "./types"
 
 export const rootCanvas=document.querySelector("#root-canvas") as HTMLRootCanvasElement;
 export const indexInput=document.querySelector(".index") as HTMLInputElement;
