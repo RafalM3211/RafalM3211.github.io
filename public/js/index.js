@@ -1,8 +1,9 @@
-import { indexInput, rootCanvas, radicantInput } from "./selectors.js";
+import { indexInput, inputRootCanvas, outputRootCanvas, radicantInput } from "./selectors.js";
 import { drawRoot, resizeRootCanvasAndRadicantInput } from "./rootCanvas.js";
-drawRoot(rootCanvas);
+drawRoot(inputRootCanvas);
+drawRoot(outputRootCanvas);
 radicantInput.addEventListener("keydown", e => {
-    resizeRootCanvasAndRadicantInput(radicantInput, rootCanvas);
+    resizeRootCanvasAndRadicantInput(radicantInput, inputRootCanvas);
 });
 indexInput.addEventListener("keydown", e => {
 });
