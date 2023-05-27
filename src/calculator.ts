@@ -18,6 +18,9 @@ export function calculateRoot(index: number, radicant: number): Root{
             radicantOutput*=Math.pow(i, groupSize);
         }
     }
+    else {
+        radicantOutput=radicant;
+    }
 
     return { multiplier, index, radicant: radicantOutput }
 }

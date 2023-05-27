@@ -14,6 +14,8 @@ function getIndexAndRadicant() {
     return { index, radicant };
 }
 function writeRoot(canvas, root) {
+    if (root.index === 1)
+        root.multiplier = root.radicant;
     if (shouldDrawRootSymbol(root)) {
         drawRoot(canvas);
         indexOutput.innerText = root.index + "";

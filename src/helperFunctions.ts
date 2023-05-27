@@ -27,6 +27,8 @@ function getIndexAndRadicant(){
 }
 
 function writeRoot(canvas: HTMLRootCanvasElement, root: Root){
+    if(root.index===1) root.multiplier=root.radicant;
+
     if(shouldDrawRootSymbol(root)) {
         drawRoot(canvas);
         indexOutput.innerText=root.index+"";
