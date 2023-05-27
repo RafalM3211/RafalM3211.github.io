@@ -12,11 +12,16 @@ import type { Root, HTMLRootCanvasElement } from "./types";
 
 
 export function calculateAndWriteRoot(){
-    const {index, radicant}=getIndexAndRadicant();
-    if(index&&radicant){
-        const calculatedRootValues=calculateRoot(index, radicant);
-        writeRoot(outputRootCanvas, calculatedRootValues);
-    } 
+    try {
+        const {index, radicant}=getIndexAndRadicant();
+        if(index&&radicant){
+            const calculatedRootValues=calculateRoot(index, radicant);
+            writeRoot(outputRootCanvas, calculatedRootValues);
+        } 
+    }
+    catch (exception) {
+
+    }
 }
 
 function getIndexAndRadicant(){
@@ -41,7 +46,7 @@ function writeRoot(canvas: HTMLRootCanvasElement, root: Root){
     }
 
     if(root.multiplier===1){
-        multiplierOutput.innerHTML="";
+        multiplierOutput.innerHTML= root.radicant===1? "1":"";
     }
     else{
         multiplierOutput.innerHTML=root.multiplier+"";
@@ -52,3 +57,7 @@ function shouldDrawRootSymbol(root: Root){
     return !(root.index===1||root.radicant===1)
 }
 
+
+function writeError(){
+
+}

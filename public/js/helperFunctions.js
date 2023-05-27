@@ -2,10 +2,14 @@ import { indexInput, radicantInput, multiplierOutput, indexOutput, radicantOutpu
 import { calculateRoot } from "./calculator.js";
 import { drawRoot, removeRoot } from "./rootCanvas.js";
 export function calculateAndWriteRoot() {
-    const { index, radicant } = getIndexAndRadicant();
-    if (index && radicant) {
-        const calculatedRootValues = calculateRoot(index, radicant);
-        writeRoot(outputRootCanvas, calculatedRootValues);
+    try {
+        const { index, radicant } = getIndexAndRadicant();
+        if (index && radicant) {
+            const calculatedRootValues = calculateRoot(index, radicant);
+            writeRoot(outputRootCanvas, calculatedRootValues);
+        }
+    }
+    catch (exception) {
     }
 }
 function getIndexAndRadicant() {
@@ -27,7 +31,7 @@ function writeRoot(canvas, root) {
         radicantOutput.innerText = "";
     }
     if (root.multiplier === 1) {
-        multiplierOutput.innerHTML = "";
+        multiplierOutput.innerHTML = root.radicant === 1 ? "1" : "";
     }
     else {
         multiplierOutput.innerHTML = root.multiplier + "";
@@ -35,4 +39,6 @@ function writeRoot(canvas, root) {
 }
 function shouldDrawRootSymbol(root) {
     return !(root.index === 1 || root.radicant === 1);
+}
+function writeError() {
 }
