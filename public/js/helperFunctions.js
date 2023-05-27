@@ -1,15 +1,20 @@
 import { indexInput, radicantInput, multiplierOutput, indexOutput, radicantOutput, outputRootCanvas } from "./selectors.js";
 import { calculateRoot } from "./calculator.js";
 import { drawRoot, removeRoot } from "./rootCanvas.js";
+import { errorOutput } from "./selectors.js";
 export function calculateAndWriteRoot() {
     try {
         const { index, radicant } = getIndexAndRadicant();
-        if (index && radicant) {
+        if (!Number.isNaN(index) && !Number.isNaN(radicant)) {
             const calculatedRootValues = calculateRoot(index, radicant);
             writeRoot(outputRootCanvas, calculatedRootValues);
+            clearError();
         }
     }
     catch (exception) {
+        removeRoot(outputRootCanvas);
+        clearRootValues();
+        writeError(exception);
     }
 }
 function getIndexAndRadicant() {
@@ -31,7 +36,7 @@ function writeRoot(canvas, root) {
         radicantOutput.innerText = "";
     }
     if (root.multiplier === 1) {
-        multiplierOutput.innerHTML = root.radicant === 1 ? "1" : "";
+        multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? root.radicant + "" : "";
     }
     else {
         multiplierOutput.innerHTML = root.multiplier + "";
@@ -40,5 +45,14 @@ function writeRoot(canvas, root) {
 function shouldDrawRootSymbol(root) {
     return !(root.index === 1 || root.radicant === 1);
 }
-function writeError() {
+function clearRootValues() {
+    indexOutput.innerText = "";
+    radicantOutput.innerText = "";
+    multiplierOutput.innerHTML = "";
+}
+function writeError(exception) {
+    errorOutput.innerHTML = exception;
+}
+function clearError() {
+    errorOutput.innerHTML = "";
 }

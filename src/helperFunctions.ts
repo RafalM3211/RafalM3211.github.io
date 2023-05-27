@@ -8,19 +8,23 @@ import {
 } from "./selectors.js";
 import { calculateRoot } from "./calculator.js"
 import { drawRoot, removeRoot } from "./rootCanvas.js";
+import { errorOutput } from "./selectors.js";
 import type { Root, HTMLRootCanvasElement } from "./types";
 
 
 export function calculateAndWriteRoot(){
     try {
         const {index, radicant}=getIndexAndRadicant();
-        if(index&&radicant){
+        if( !Number.isNaN(index) && !Number.isNaN(radicant)){
             const calculatedRootValues=calculateRoot(index, radicant);
             writeRoot(outputRootCanvas, calculatedRootValues);
+            clearError();
         } 
     }
     catch (exception) {
-
+        removeRoot(outputRootCanvas);
+        clearRootValues();
+        writeError(exception as string);
     }
 }
 
@@ -46,7 +50,7 @@ function writeRoot(canvas: HTMLRootCanvasElement, root: Root){
     }
 
     if(root.multiplier===1){
-        multiplierOutput.innerHTML= root.radicant===1? "1":"";
+        multiplierOutput.innerHTML=(root.radicant===1||root.radicant===0)? root.radicant+"":"";
     }
     else{
         multiplierOutput.innerHTML=root.multiplier+"";
@@ -58,6 +62,16 @@ function shouldDrawRootSymbol(root: Root){
 }
 
 
-function writeError(){
+function clearRootValues(){
+    indexOutput.innerText="";
+    radicantOutput.innerText="";
+    multiplierOutput.innerHTML="";
+}
 
+function writeError(exception: string){
+    errorOutput.innerHTML=exception;
+}
+
+function clearError(){
+    errorOutput.innerHTML="";
 }

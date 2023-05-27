@@ -4,7 +4,9 @@ export function calculateRoot(index: number, radicant: number): Root{
     let multiplier=1;
     let radicantOutput=1;
 
-    if( !(radicant==1||index==1) ) {
+    checkForInputMistakes(index, radicant);
+
+    if( !(radicant==1||radicant==0||index==1) ) {
         for(let i=2; i<=radicant; i++){
             let groupSize=0;
             while(radicant%i==0){
@@ -25,3 +27,12 @@ export function calculateRoot(index: number, radicant: number): Root{
     return { multiplier, index, radicant: radicantOutput }
 }
 
+function checkForInputMistakes(index: number, radicant: number){
+    if(index<1 || (isEven(index)&&radicant<0)){
+        throw "input error";
+    }
+}
+
+function isEven(number: number){
+    return number%2===0;
+}

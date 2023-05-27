@@ -91,7 +91,7 @@ body{
     text-align: center;
 }
 
-.multiplier-output{
+.multiplier-output, .error-output{
     margin: 0;
     font-size: 4em;
     align-self: flex-end;
