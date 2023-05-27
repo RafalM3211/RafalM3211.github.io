@@ -3,25 +3,50 @@ import {
     radicantInput,
     multiplierOutput,
     indexOutput,
-    radicantOutput 
+    radicantOutput,
+    outputRootCanvas
 } from "./selectors.js";
-import type { Root } from "./types";
+import { calculateRoot } from "./calculator.js"
+import { drawRoot, removeRoot } from "./rootCanvas.js";
+import type { Root, HTMLRootCanvasElement } from "./types";
 
-export function getIndexAndRadicant(){
+
+export function calculateAndWriteRoot(){
+    const {index, radicant}=getIndexAndRadicant();
+    if(index&&radicant){
+        const calculatedRootValues=calculateRoot(index, radicant);
+        writeRoot(outputRootCanvas, calculatedRootValues);
+    } 
+}
+
+function getIndexAndRadicant(){
     const index=indexInput.valueAsNumber;
     const radicant=radicantInput.valueAsNumber;
 
     return {index, radicant}
 }
 
-export function writeRootOutput(root: Root){
+function writeRoot(canvas: HTMLRootCanvasElement, root: Root){
+    if(shouldDrawRootSymbol(root)) {
+        drawRoot(canvas);
+        indexOutput.innerText=root.index+"";
+        radicantOutput.innerText=root.radicant+"";
+    }
+    else {
+        removeRoot(canvas);
+        indexOutput.innerText="";
+        radicantOutput.innerText="";
+    }
+
     if(root.multiplier===1){
         multiplierOutput.innerHTML="";
     }
     else{
         multiplierOutput.innerHTML=root.multiplier+"";
     }
-    
-    indexOutput.innerText=root.index+"";
-    radicantOutput.innerText=root.radicant+"";
 }
+
+function shouldDrawRootSymbol(root: Root){
+    return !(root.index===1||root.radicant===1)
+}
+
