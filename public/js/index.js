@@ -14,6 +14,13 @@ radicantInput.addEventListener("keydown", e => {
     }, 0);
 });
 indexInput.addEventListener("keydown", e => {
+    setTimeout(() => {
+        const { index, radicant } = getIndexAndRadicant();
+        if (index && radicant) {
+            const root = calculateRoot(index, radicant);
+            writeRootOutput(root);
+        }
+    }, 0);
 });
 function getIndexAndRadicant() {
     const index = indexInput.valueAsNumber;
