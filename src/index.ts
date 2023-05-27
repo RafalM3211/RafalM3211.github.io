@@ -9,7 +9,7 @@ import {
     } from "./selectors.js";
 import {drawRoot, resizeRootCanvasAndRadicantInput} from "./rootCanvas.js";
 import { calculateRoot } from "./calculator.js";
-import type { Root } from "./types";
+import { getIndexAndRadicant, writeRootOutput } from "./helperFunctions";
 
 drawRoot(inputRootCanvas);
 drawRoot(outputRootCanvas);
@@ -36,21 +36,3 @@ indexInput.addEventListener("keydown", e=>{
 });
 
 
-function getIndexAndRadicant(){
-    const index=indexInput.valueAsNumber;
-    const radicant=radicantInput.valueAsNumber;
-
-    return {index, radicant}
-}
-
-function writeRootOutput(root: Root){
-    if(root.multiplier===1){
-        multiplierOutput.innerHTML="";
-    }
-    else{
-        multiplierOutput.innerHTML=root.multiplier+"";
-    }
-    
-    indexOutput.innerText=root.index+"";
-    radicantOutput.innerText=root.radicant+"";
-}

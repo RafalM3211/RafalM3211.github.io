@@ -1,6 +1,7 @@
-import { indexInput, inputRootCanvas, outputRootCanvas, radicantInput, multiplierOutput, indexOutput, radicantOutput } from "./selectors.js";
+import { indexInput, inputRootCanvas, outputRootCanvas, radicantInput } from "./selectors.js";
 import { drawRoot, resizeRootCanvasAndRadicantInput } from "./rootCanvas.js";
 import { calculateRoot } from "./calculator.js";
+import { getIndexAndRadicant, writeRootOutput } from "./helperFunctions";
 drawRoot(inputRootCanvas);
 drawRoot(outputRootCanvas);
 radicantInput.addEventListener("keydown", e => {
@@ -22,18 +23,3 @@ indexInput.addEventListener("keydown", e => {
         }
     }, 0);
 });
-function getIndexAndRadicant() {
-    const index = indexInput.valueAsNumber;
-    const radicant = radicantInput.valueAsNumber;
-    return { index, radicant };
-}
-function writeRootOutput(root) {
-    if (root.multiplier === 1) {
-        multiplierOutput.innerHTML = "";
-    }
-    else {
-        multiplierOutput.innerHTML = root.multiplier + "";
-    }
-    indexOutput.innerText = root.index + "";
-    radicantOutput.innerText = root.radicant + "";
-}
