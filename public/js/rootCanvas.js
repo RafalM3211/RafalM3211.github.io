@@ -6,6 +6,7 @@ export function drawRoot(canvas) {
     if (!ctx) {
         throw contextIsNullError;
     }
+    removeRoot(canvas);
     ctx.beginPath();
     ctx.moveTo(15, height * 0.5);
     ctx.lineTo(45, height * 0.5);
@@ -13,6 +14,15 @@ export function drawRoot(canvas) {
     ctx.lineTo(80, 5);
     ctx.lineTo(width, 5);
     ctx.stroke();
+}
+export function removeRoot(canvas) {
+    const width = canvas.width;
+    const height = canvas.height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+        throw contextIsNullError;
+    }
+    ctx.clearRect(0, 0, width, height);
 }
 export function resizeRootCanvasAndRadicantInput(radicantInput, rootCanvas) {
     if (!rootCanvas.dataset.minWidth)
