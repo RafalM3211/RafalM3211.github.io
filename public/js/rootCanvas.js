@@ -15,15 +15,13 @@ export function drawRoot(canvas) {
     ctx.stroke();
 }
 export function resizeRootCanvasAndRadicantInput(radicantInput, rootCanvas) {
-    setTimeout(() => {
-        if (!rootCanvas.dataset.minWidth)
-            throw new Error("you should specify 'data-min-width' attribute on canvas element");
-        const minWidth = parseInt(rootCanvas.dataset.minWidth);
-        const additionalWidth = getAdditionalWidthBasedOnInputLength(radicantInput);
-        radicantInput.style.width = getFontSizeNumber(radicantInput) + additionalWidth + "px";
-        rootCanvas.width = minWidth + additionalWidth;
-        drawRoot(rootCanvas);
-    }, 0);
+    if (!rootCanvas.dataset.minWidth)
+        throw new Error("you should specify 'data-min-width' attribute on canvas element");
+    const minWidth = parseInt(rootCanvas.dataset.minWidth);
+    const additionalWidth = getAdditionalWidthBasedOnInputLength(radicantInput);
+    radicantInput.style.width = getFontSizeNumber(radicantInput) + additionalWidth + "px";
+    rootCanvas.width = minWidth + additionalWidth;
+    drawRoot(rootCanvas);
 }
 function getFontSizeNumber(element) {
     const fontSizePx = getComputedStyle(element).fontSize;

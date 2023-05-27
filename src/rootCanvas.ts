@@ -21,7 +21,6 @@ export function drawRoot(canvas: HTMLRootCanvasElement){
 
 
 export function resizeRootCanvasAndRadicantInput(radicantInput: HTMLInputElement, rootCanvas: HTMLRootCanvasElement){
-    setTimeout(()=>{
         if(!rootCanvas.dataset.minWidth) throw new Error("you should specify 'data-min-width' attribute on canvas element");
     
         const minWidth=parseInt(rootCanvas.dataset.minWidth);
@@ -29,7 +28,6 @@ export function resizeRootCanvasAndRadicantInput(radicantInput: HTMLInputElement
         radicantInput.style.width=getFontSizeNumber(radicantInput)+additionalWidth+"px";
         rootCanvas.width=minWidth+additionalWidth;
         drawRoot(rootCanvas);
-    }, 0);
 }
 
 
