@@ -42,7 +42,7 @@ body{
 
 .calculator-container{
     color: var(--dark);
-    margin-top: 100px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     align-items: center
@@ -50,7 +50,7 @@ body{
 
 .equal-sign{
     min-width: 40px;
-    margin: 0 40px;
+    margin: 100px 40px;
 }
 .equal-sign path{
     fill: var(--dark);
@@ -132,13 +132,14 @@ body{
     }
 
     .equal-sign{
-        margin: 0 10px;
+        margin: 100px 10px;
     }
 }
 
 @media screen and (max-width: 450px) {
     .calculator-container{
         flex-direction: column;
+        margin-top: 50px;
     }
 
     .equal-sign{
