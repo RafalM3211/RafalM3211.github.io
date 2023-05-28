@@ -26,12 +26,19 @@ export function removeRoot(canvas) {
     }
     ctx.clearRect(0, 0, width, height);
 }
-export function resizeRootCanvasAndRadicantInput(radicantInput, rootCanvas) {
-    if (!rootCanvas.dataset.minWidth)
+export function getAdditionalWidthBasedOnElementAndText(element, content) {
+    const charWidthToHeightRatio = 0.55;
+    const contentLengt = content.length;
+    const fontSize = getFontSizeNumber(element);
+    const additionalWidth = charWidthToHeightRatio * fontSize * ((contentLengt || 1) - 1);
+    return additionalWidth;
+}
+export function resizeRootCanvasAndContent(content, rootCanvas, additionalWidth) {
+    if (!rootCanvas.dataset.minWidth) {
         throw new Error("you should specify 'data-min-width' attribute on canvas element");
+    }
     const minWidth = parseInt(rootCanvas.dataset.minWidth);
-    const additionalWidth = getAdditionalWidthBasedOnInputLength(radicantInput);
-    radicantInput.style.width = getFontSizeNumber(radicantInput) + additionalWidth + "px";
+    content.style.width = getFontSizeNumber(content) + additionalWidth + "px";
     rootCanvas.width = minWidth + additionalWidth;
     drawRoot(rootCanvas);
 }
@@ -39,11 +46,4 @@ function getFontSizeNumber(element) {
     const fontSizePx = getComputedStyle(element).fontSize;
     const fontSizeNumber = parseInt(fontSizePx.slice(0, -2));
     return fontSizeNumber;
-}
-function getAdditionalWidthBasedOnInputLength(input) {
-    const charWidthToHeightRatio = 0.55;
-    const inputLengt = input.value.length;
-    const fontSize = getFontSizeNumber(input);
-    const additionalWidth = charWidthToHeightRatio * fontSize * ((inputLengt || 1) - 1);
-    return additionalWidth;
 }

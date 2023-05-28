@@ -2,9 +2,14 @@ import {
      indexInput, 
      inputRootCanvas, 
      outputRootCanvas, 
-     radicantInput
+     radicantInput,
+     radicantOutput
     } from "./selectors.js";
-import {drawRoot, resizeRootCanvasAndRadicantInput} from "./rootCanvas.js";
+import { 
+    drawRoot, 
+    resizeRootCanvasAndContent,
+    getAdditionalWidthBasedOnElementAndText
+} from "./rootCanvas.js";
 import { calculateAndWriteRoot } from "./coreFunctions.js";
 
 drawRoot(inputRootCanvas);
@@ -12,8 +17,15 @@ drawRoot(outputRootCanvas);
 
 radicantInput.addEventListener("keydown", e=>{
     setTimeout(()=>{
-        resizeRootCanvasAndRadicantInput(radicantInput, inputRootCanvas);
+        const additionalInputWidth=getAdditionalWidthBasedOnElementAndText(radicantInput, radicantInput.value);
+        resizeRootCanvasAndContent(radicantInput, inputRootCanvas, additionalInputWidth);
+
         calculateAndWriteRoot();
+
+        if(radicantOutput.textContent){
+            const additionalOutputWidth=getAdditionalWidthBasedOnElementAndText(radicantOutput, radicantOutput.textContent||"");
+            resizeRootCanvasAndContent(radicantOutput, outputRootCanvas, additionalOutputWidth);
+        }
     }, 0);
 });
 

@@ -36,14 +36,25 @@ export function removeRoot(canvas: HTMLRootCanvasElement){
 }
 
 
-export function resizeRootCanvasAndRadicantInput(radicantInput: HTMLInputElement, rootCanvas: HTMLRootCanvasElement){
-        if(!rootCanvas.dataset.minWidth) throw new Error("you should specify 'data-min-width' attribute on canvas element");
+export function getAdditionalWidthBasedOnElementAndText(element: HTMLElement, content: string){
+    const charWidthToHeightRatio=0.55;
+    const contentLengt=content.length;
+    const fontSize=getFontSizeNumber(element);
+    const additionalWidth=charWidthToHeightRatio*fontSize*((contentLengt||1)-1);
+    return additionalWidth
+}
+
+
+
+export function resizeRootCanvasAndContent(content: HTMLElement, rootCanvas: HTMLRootCanvasElement, additionalWidth: number){
+    if(!rootCanvas.dataset.minWidth){
+        throw new Error("you should specify 'data-min-width' attribute on canvas element");
+    } 
     
-        const minWidth=parseInt(rootCanvas.dataset.minWidth);
-        const additionalWidth=getAdditionalWidthBasedOnInputLength(radicantInput);
-        radicantInput.style.width=getFontSizeNumber(radicantInput)+additionalWidth+"px";
-        rootCanvas.width=minWidth+additionalWidth;
-        drawRoot(rootCanvas);
+    const minWidth=parseInt(rootCanvas.dataset.minWidth);
+    content.style.width=getFontSizeNumber(content)+additionalWidth+"px";
+    rootCanvas.width=minWidth+additionalWidth;
+    drawRoot(rootCanvas);
 }
 
 
@@ -53,11 +64,4 @@ function getFontSizeNumber(element: HTMLElement){
     return fontSizeNumber; 
 }
 
-function getAdditionalWidthBasedOnInputLength(input: HTMLInputElement){
-    const charWidthToHeightRatio=0.55;
-    const inputLengt=input.value.length;
-    const fontSize=getFontSizeNumber(input);
-    const additionalWidth=charWidthToHeightRatio*fontSize*((inputLengt||1)-1);
-    return additionalWidth
-}
 
