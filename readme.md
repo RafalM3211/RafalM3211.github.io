@@ -1,4 +1,4 @@
-Root calculator app
+# Root calculator app
 
 ## run app
 
