@@ -43,7 +43,6 @@ body{
 .calculator-container{
     color: var(--dark);
     margin-top: 100px;
-    padding: 0 50px;
     display: flex;
     flex-wrap: wrap;
     align-items: center
