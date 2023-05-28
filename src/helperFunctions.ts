@@ -17,7 +17,7 @@ export function getIndexAndRadicant(){
 }
 
 export function shouldDrawRootSymbol(root: Root){
-    return !(root.index===1||root.radicant===1)
+    return !(root.index===1|| Math.abs(root.radicant)===1);
 }
 
 export function clearRootValues(){

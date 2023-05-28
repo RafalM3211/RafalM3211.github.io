@@ -46,10 +46,14 @@ function writeRoot(canvas: HTMLRootCanvasElement, root: Root){
         radicantOutput.innerText="";
     }
 
-    if(root.multiplier===1){
+    if( root.multiplier===1){
         multiplierOutput.innerHTML=(root.radicant===1||root.radicant===0)? root.radicant+"":"";
     }
     else{
         multiplierOutput.innerHTML=root.multiplier+"";
+    }
+    
+    if( root.multiplier===-1){
+        multiplierOutput.innerHTML=(root.radicant===1||root.radicant===0)? "-"+root.radicant:"-";
     }
 }

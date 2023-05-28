@@ -2,6 +2,10 @@ export function calculateRoot(index, radicant) {
     let multiplier = 1;
     let radicantOutput = 1;
     checkForInputMistakes(index, radicant);
+    if (radicant < 0) {
+        radicant = Math.abs(radicant);
+        multiplier = -1;
+    }
     if (!(radicant == 1 || radicant == 0 || index == 1)) {
         for (let i = 2; i <= radicant; i++) {
             let groupSize = 0;

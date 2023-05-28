@@ -6,7 +6,7 @@ export function getIndexAndRadicant() {
     return { index, radicant };
 }
 export function shouldDrawRootSymbol(root) {
-    return !(root.index === 1 || root.radicant === 1);
+    return !(root.index === 1 || Math.abs(root.radicant) === 1);
 }
 export function clearRootValues() {
     indexOutput.innerText = "";
