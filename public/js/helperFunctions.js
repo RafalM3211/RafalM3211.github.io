@@ -19,3 +19,8 @@ export function writeError(exception) {
 export function clearError() {
     errorOutput.innerHTML = "";
 }
+export function limitInputLengh(input, length) {
+    if (input.value.length > 8) {
+        input.value = input.value.slice(0, -1);
+    }
+}

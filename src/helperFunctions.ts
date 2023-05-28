@@ -33,3 +33,9 @@ export function writeError(exception: string){
 export function clearError(){
     errorOutput.innerHTML="";
 }
+
+export function limitInputLengh(input: HTMLInputElement, length: number){
+    if(input.value.length>8){
+        input.value=input.value.slice(0, -1);
+    }
+}

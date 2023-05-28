@@ -10,6 +10,7 @@ import {
     resizeRootCanvasAndContent,
     getAdditionalWidthBasedOnElementAndText
 } from "./rootCanvas.js";
+import { limitInputLengh } from "./helperFunctions.js";
 import { calculateAndWriteRoot } from "./coreFunctions.js";
 
 drawRoot(inputRootCanvas);
@@ -17,6 +18,8 @@ drawRoot(outputRootCanvas);
 
 radicantInput.addEventListener("keydown", e=>{
     setTimeout(()=>{
+        limitInputLengh(radicantInput, 8);
+
         const additionalInputWidth=getAdditionalWidthBasedOnElementAndText(radicantInput, radicantInput.value);
         resizeRootCanvasAndContent(radicantInput, inputRootCanvas, additionalInputWidth);
 
