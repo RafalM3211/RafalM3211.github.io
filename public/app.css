@@ -5,7 +5,7 @@ body{
     --light: rgb(252, 234, 208);
     --dark: rgb(100 67 15);
 
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
     margin: 0;
     font-size: 1rem;
     background-color: var(--primary);
@@ -20,9 +20,11 @@ body{
 
 
 .app-header{
+    padding: 0 20px;
     padding-top: 10px;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .logo{
@@ -43,10 +45,12 @@ body{
     margin-top: 100px;
     padding: 0 50px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center
 }
 
 .equal-sign{
+    min-width: 40px;
     margin: 0 40px;
 }
 .equal-sign path{
@@ -83,6 +87,10 @@ body{
     outline: none;
 }
 
+.output{
+    display: flex;
+}
+
 .root-output{
     margin: 0;
     padding: 6px;
@@ -112,4 +120,29 @@ body{
     bottom: 0;  /* stroke width */
     left: 80px;
     transition: all 0.1s linear;
+}
+
+@media screen and (max-width: 750px) {
+    .container{
+        width: 100%;
+    }
+
+    .calculator-container{
+        justify-content: center;
+        padding: 0 10px;
+    }
+
+    .equal-sign{
+        margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .calculator-container{
+        flex-direction: column;
+    }
+
+    .equal-sign{
+        margin: 40px 10px;
+    }
 }

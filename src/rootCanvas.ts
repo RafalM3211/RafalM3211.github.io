@@ -11,6 +11,8 @@ export function drawRoot(canvas: HTMLRootCanvasElement){
     }
 
     removeRoot(canvas);
+    canvas.style.display="block";
+
     ctx.beginPath();
     ctx.moveTo(15, height*0.5);
     ctx.lineTo(45, height*0.5);
@@ -21,6 +23,8 @@ export function drawRoot(canvas: HTMLRootCanvasElement){
 }
 
 export function removeRoot(canvas: HTMLRootCanvasElement){
+    canvas.style.display="none";
+    
     const width=canvas.width;
     const height=canvas.height;
     const ctx=canvas.getContext("2d");
@@ -28,7 +32,7 @@ export function removeRoot(canvas: HTMLRootCanvasElement){
         throw contextIsNullError;
     }
 
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, width, height); 
 }
 
 

@@ -7,6 +7,7 @@ export function drawRoot(canvas) {
         throw contextIsNullError;
     }
     removeRoot(canvas);
+    canvas.style.display = "block";
     ctx.beginPath();
     ctx.moveTo(15, height * 0.5);
     ctx.lineTo(45, height * 0.5);
@@ -16,6 +17,7 @@ export function drawRoot(canvas) {
     ctx.stroke();
 }
 export function removeRoot(canvas) {
+    canvas.style.display = "none";
     const width = canvas.width;
     const height = canvas.height;
     const ctx = canvas.getContext("2d");
