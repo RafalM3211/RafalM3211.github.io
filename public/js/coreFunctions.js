@@ -33,10 +33,10 @@ function writeRoot(canvas, root) {
     if (root.multiplier === 1) {
         multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? root.radicant + "" : "";
     }
+    else if (root.multiplier === -1) {
+        multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? "-" + root.radicant : "-";
+    }
     else {
         multiplierOutput.innerHTML = root.multiplier + "";
-    }
-    if (root.multiplier === -1) {
-        multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? "-" + root.radicant : "-";
     }
 }
