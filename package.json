@@ -11,9 +11,9 @@
     "webpack": "^5.84.1"
   },
   "scripts": {
-    "server": "npx http-server",
-    "tsc": "npx tsc --watch",
-    "dev": "npm-run-all -p server tsc",
+    "server": "http-server",
+    "build": "webpack --watch",
+    "dev": "npm-run-all -p server build",
     "test": "jest --watch"
   },
   "devDependencies": {
