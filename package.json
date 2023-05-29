@@ -10,6 +10,7 @@
   "scripts": {
     "server": "npx http-server",
     "tsc": "npx tsc --watch",
-    "dev": "npm-run-all -p server tsc"
+    "dev": "npm-run-all -p server tsc",
+    "test": "jest"
   }
 }
