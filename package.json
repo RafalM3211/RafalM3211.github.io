@@ -11,6 +11,6 @@
     "server": "npx http-server",
     "tsc": "npx tsc --watch",
     "dev": "npm-run-all -p server tsc",
-    "test": "jest"
+    "test": "jest --watch"
   }
 }
