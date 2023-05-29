@@ -3,16 +3,16 @@ import {
     indexOutput,
     radicantOutput,
     outputRootCanvas
-} from "./selectors.js";
-import { calculateRoot } from "./calculator.js"
-import { drawRoot, removeRoot } from "./rootCanvas.js";
+} from "./selectors";
+import { calculateRoot } from "./calculator"
+import { drawRoot, removeRoot } from "./rootCanvas";
 import {
     getIndexAndRadicant,
     clearRootValues, 
     clearError, 
     shouldDrawRootSymbol, 
     writeError 
-} from "./helperFunctions.js";
+} from "./helperFunctions";
 import type { Root, HTMLRootCanvasElement } from "./types";
 
 

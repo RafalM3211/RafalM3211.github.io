@@ -5,7 +5,7 @@ import {
     indexOutput,
     radicantOutput,
     errorOutput
-} from "./selectors.js";
+} from "./selectors";
 import type { Root } from "./types";
 
 

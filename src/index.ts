@@ -4,14 +4,14 @@ import {
      outputRootCanvas, 
      radicantInput,
      radicantOutput
-    } from "./selectors.js";
+    } from "./selectors";
 import { 
     drawRoot, 
     resizeRootCanvasAndContent,
     getAdditionalWidthBasedOnElementAndText
-} from "./rootCanvas.js";
-import { limitInputLengh } from "./helperFunctions.js";
-import { calculateAndWriteRoot } from "./coreFunctions.js";
+} from "./rootCanvas";
+import { limitInputLengh } from "./helperFunctions";
+import { calculateAndWriteRoot } from "./coreFunctions";
 
 drawRoot(inputRootCanvas);
 drawRoot(outputRootCanvas);
