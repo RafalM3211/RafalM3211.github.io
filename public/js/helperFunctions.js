@@ -1,5 +1,4 @@
-import { indexInput, radicantInput, multiplierOutput, indexOutput, radicantOutput, } from "./selectors.js";
-import { errorOutput } from "./selectors.js";
+import { indexInput, radicantInput, multiplierOutput, indexOutput, radicantOutput, errorOutput } from "./selectors.js";
 export function getIndexAndRadicant() {
     const index = indexInput.valueAsNumber;
     const radicant = radicantInput.valueAsNumber;

@@ -4,8 +4,8 @@ import {
     multiplierOutput,
     indexOutput,
     radicantOutput,
+    errorOutput
 } from "./selectors.js";
-import { errorOutput } from "./selectors.js";
 import type { Root } from "./types";
 
 
