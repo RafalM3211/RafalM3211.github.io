@@ -1,4 +1,5 @@
 const path=require("path");
+const { CleanWebpackPlugin }=require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/index.ts',
@@ -6,17 +7,18 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.tsx?$/,
+          test: /\.ts?$/,
           use: 'ts-loader',
           exclude: /node_modules/,
         },
       ],
     },
+    devtool: 'source-map',
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.ts', '.js'],
     },
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'public')
-    },
+    }
 };

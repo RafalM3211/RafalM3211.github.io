@@ -1,11 +1,3 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -16,7 +8,46 @@
   \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   calculateRoot: () => (/* binding */ calculateRoot)\n/* harmony export */ });\nfunction calculateRoot(index, radicant) {\n    let multiplier = 1;\n    let radicantOutput = 1;\n    checkForInputMistakes(index, radicant);\n    if (radicant < 0) {\n        radicant = Math.abs(radicant);\n        multiplier = -1;\n    }\n    if (!(radicant == 1 || radicant == 0 || index == 1)) {\n        for (let i = 2; i <= radicant; i++) {\n            let groupSize = 0;\n            while (radicant % i == 0) {\n                groupSize++;\n                if (groupSize == index) {\n                    multiplier *= i;\n                    groupSize = 0;\n                }\n                radicant /= i;\n            }\n            radicantOutput *= Math.pow(i, groupSize);\n        }\n    }\n    else {\n        radicantOutput = radicant;\n    }\n    return { multiplier, index, radicant: radicantOutput };\n}\nfunction checkForInputMistakes(index, radicant) {\n    if (index < 1 || (isEven(index) && radicant < 0)) {\n        throw \"input error\";\n    }\n}\nfunction isEven(number) {\n    return number % 2 === 0;\n}\n\n\n//# sourceURL=webpack:///./src/calculator.ts?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   calculateRoot: () => (/* binding */ calculateRoot)
+/* harmony export */ });
+function calculateRoot(index, radicant) {
+    let multiplier = 1;
+    let radicantOutput = 1;
+    checkForInputMistakes(index, radicant);
+    if (radicant < 0) {
+        radicant = Math.abs(radicant);
+        multiplier = -1;
+    }
+    if (!(radicant == 1 || radicant == 0 || index == 1)) {
+        for (let i = 2; i <= radicant; i++) {
+            let groupSize = 0;
+            while (radicant % i == 0) {
+                groupSize++;
+                if (groupSize == index) {
+                    multiplier *= i;
+                    groupSize = 0;
+                }
+                radicant /= i;
+            }
+            radicantOutput *= Math.pow(i, groupSize);
+        }
+    }
+    else {
+        radicantOutput = radicant;
+    }
+    return { multiplier, index, radicant: radicantOutput };
+}
+function checkForInputMistakes(index, radicant) {
+    if (index < 1 || (isEven(index) && radicant < 0)) {
+        throw "input error";
+    }
+}
+function isEven(number) {
+    return number % 2 === 0;
+}
+
 
 /***/ }),
 
@@ -26,7 +57,57 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   calculateAndWriteRoot: () => (/* binding */ calculateAndWriteRoot)\n/* harmony export */ });\n/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors */ \"./src/selectors.ts\");\n/* harmony import */ var _calculator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calculator */ \"./src/calculator.ts\");\n/* harmony import */ var _rootCanvas__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./rootCanvas */ \"./src/rootCanvas.ts\");\n/* harmony import */ var _helperFunctions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helperFunctions */ \"./src/helperFunctions.ts\");\n\n\n\n\nfunction calculateAndWriteRoot() {\n    try {\n        const { index, radicant } = (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.getIndexAndRadicant)();\n        if (!Number.isNaN(index) && !Number.isNaN(radicant)) {\n            const calculatedRootValues = (0,_calculator__WEBPACK_IMPORTED_MODULE_1__.calculateRoot)(index, radicant);\n            writeRoot(_selectors__WEBPACK_IMPORTED_MODULE_0__.outputRootCanvas, calculatedRootValues);\n            (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.clearError)();\n        }\n    }\n    catch (exception) {\n        (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_2__.removeRoot)(_selectors__WEBPACK_IMPORTED_MODULE_0__.outputRootCanvas);\n        (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.clearRootValues)();\n        (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.writeError)(exception);\n    }\n}\nfunction writeRoot(canvas, root) {\n    if (root.index === 1)\n        root.multiplier = root.radicant;\n    if ((0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.shouldDrawRootSymbol)(root)) {\n        (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_2__.drawRoot)(canvas);\n        _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.innerText = root.index + \"\";\n        _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.innerText = root.radicant + \"\";\n    }\n    else {\n        (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_2__.removeRoot)(canvas);\n        _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.innerText = \"\";\n        _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.innerText = \"\";\n    }\n    if (root.multiplier === 1) {\n        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? root.radicant + \"\" : \"\";\n    }\n    else if (root.multiplier === -1) {\n        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? \"-\" + root.radicant : \"-\";\n    }\n    else {\n        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = root.multiplier + \"\";\n    }\n}\n\n\n//# sourceURL=webpack:///./src/coreFunctions.ts?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   calculateAndWriteRoot: () => (/* binding */ calculateAndWriteRoot)
+/* harmony export */ });
+/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors */ "./src/selectors.ts");
+/* harmony import */ var _calculator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calculator */ "./src/calculator.ts");
+/* harmony import */ var _rootCanvas__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./rootCanvas */ "./src/rootCanvas.ts");
+/* harmony import */ var _helperFunctions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helperFunctions */ "./src/helperFunctions.ts");
+
+
+
+
+function calculateAndWriteRoot() {
+    try {
+        const { index, radicant } = (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.getIndexAndRadicant)();
+        if (!Number.isNaN(index) && !Number.isNaN(radicant)) {
+            const calculatedRootValues = (0,_calculator__WEBPACK_IMPORTED_MODULE_1__.calculateRoot)(index, radicant);
+            writeRoot(_selectors__WEBPACK_IMPORTED_MODULE_0__.outputRootCanvas, calculatedRootValues);
+            (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.clearError)();
+        }
+    }
+    catch (exception) {
+        (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_2__.removeRoot)(_selectors__WEBPACK_IMPORTED_MODULE_0__.outputRootCanvas);
+        (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.clearRootValues)();
+        (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.writeError)(exception);
+    }
+}
+function writeRoot(canvas, root) {
+    if (root.index === 1)
+        root.multiplier = root.radicant;
+    if ((0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.shouldDrawRootSymbol)(root)) {
+        (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_2__.drawRoot)(canvas);
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.innerText = root.index + "";
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.innerText = root.radicant + "";
+    }
+    else {
+        (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_2__.removeRoot)(canvas);
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.innerText = "";
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.innerText = "";
+    }
+    if (root.multiplier === 1) {
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? root.radicant + "" : "";
+    }
+    else if (root.multiplier === -1) {
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? "-" + root.radicant : "-";
+    }
+    else {
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = root.multiplier + "";
+    }
+}
+
 
 /***/ }),
 
@@ -36,17 +117,42 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   clearError: () => (/* binding */ clearError),\n/* harmony export */   clearRootValues: () => (/* binding */ clearRootValues),\n/* harmony export */   getIndexAndRadicant: () => (/* binding */ getIndexAndRadicant),\n/* harmony export */   limitInputLengh: () => (/* binding */ limitInputLengh),\n/* harmony export */   shouldDrawRootSymbol: () => (/* binding */ shouldDrawRootSymbol),\n/* harmony export */   writeError: () => (/* binding */ writeError)\n/* harmony export */ });\n/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors */ \"./src/selectors.ts\");\n\nfunction getIndexAndRadicant() {\n    const index = _selectors__WEBPACK_IMPORTED_MODULE_0__.indexInput.valueAsNumber;\n    const radicant = _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput.valueAsNumber;\n    return { index, radicant };\n}\nfunction shouldDrawRootSymbol(root) {\n    return !(root.index === 1 || Math.abs(root.radicant) === 1);\n}\nfunction clearRootValues() {\n    _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.innerText = \"\";\n    _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.innerText = \"\";\n    _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = \"\";\n}\nfunction writeError(exception) {\n    _selectors__WEBPACK_IMPORTED_MODULE_0__.errorOutput.innerHTML = exception;\n}\nfunction clearError() {\n    _selectors__WEBPACK_IMPORTED_MODULE_0__.errorOutput.innerHTML = \"\";\n}\nfunction limitInputLengh(input, length) {\n    if (input.value.length > 8) {\n        input.value = input.value.slice(0, -1);\n    }\n}\n\n\n//# sourceURL=webpack:///./src/helperFunctions.ts?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   clearError: () => (/* binding */ clearError),
+/* harmony export */   clearRootValues: () => (/* binding */ clearRootValues),
+/* harmony export */   getIndexAndRadicant: () => (/* binding */ getIndexAndRadicant),
+/* harmony export */   limitInputLengh: () => (/* binding */ limitInputLengh),
+/* harmony export */   shouldDrawRootSymbol: () => (/* binding */ shouldDrawRootSymbol),
+/* harmony export */   writeError: () => (/* binding */ writeError)
+/* harmony export */ });
+/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors */ "./src/selectors.ts");
 
-/***/ }),
+function getIndexAndRadicant() {
+    const index = _selectors__WEBPACK_IMPORTED_MODULE_0__.indexInput.valueAsNumber;
+    const radicant = _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput.valueAsNumber;
+    return { index, radicant };
+}
+function shouldDrawRootSymbol(root) {
+    return !(root.index === 1 || Math.abs(root.radicant) === 1);
+}
+function clearRootValues() {
+    _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.innerText = "";
+    _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.innerText = "";
+    _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = "";
+}
+function writeError(exception) {
+    _selectors__WEBPACK_IMPORTED_MODULE_0__.errorOutput.innerHTML = exception;
+}
+function clearError() {
+    _selectors__WEBPACK_IMPORTED_MODULE_0__.errorOutput.innerHTML = "";
+}
+function limitInputLengh(input, length) {
+    if (input.value.length > 8) {
+        input.value = input.value.slice(0, -1);
+    }
+}
 
-/***/ "./src/index.ts":
-/*!**********************!*\
-  !*** ./src/index.ts ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors */ \"./src/selectors.ts\");\n/* harmony import */ var _rootCanvas__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rootCanvas */ \"./src/rootCanvas.ts\");\n/* harmony import */ var _helperFunctions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helperFunctions */ \"./src/helperFunctions.ts\");\n/* harmony import */ var _coreFunctions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coreFunctions */ \"./src/coreFunctions.ts\");\n\n\n\n\n(0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.drawRoot)(_selectors__WEBPACK_IMPORTED_MODULE_0__.inputRootCanvas);\n(0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.drawRoot)(_selectors__WEBPACK_IMPORTED_MODULE_0__.outputRootCanvas);\n_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput.addEventListener(\"keydown\", e => {\n    setTimeout(() => {\n        (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_2__.limitInputLengh)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput, 8);\n        const additionalInputWidth = (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.getAdditionalWidthBasedOnElementAndText)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput, _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput.value);\n        (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.resizeRootCanvasAndContent)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput, _selectors__WEBPACK_IMPORTED_MODULE_0__.inputRootCanvas, additionalInputWidth);\n        (0,_coreFunctions__WEBPACK_IMPORTED_MODULE_3__.calculateAndWriteRoot)();\n        if (_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.textContent) {\n            const additionalOutputWidth = (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.getAdditionalWidthBasedOnElementAndText)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput, _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.textContent || \"\");\n            (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.resizeRootCanvasAndContent)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput, _selectors__WEBPACK_IMPORTED_MODULE_0__.outputRootCanvas, additionalOutputWidth);\n        }\n    }, 0);\n});\n_selectors__WEBPACK_IMPORTED_MODULE_0__.indexInput.addEventListener(\"keydown\", e => {\n    setTimeout(() => {\n        (0,_coreFunctions__WEBPACK_IMPORTED_MODULE_3__.calculateAndWriteRoot)();\n    }, 0);\n});\n\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ }),
 
@@ -56,7 +162,63 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sel
   \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   drawRoot: () => (/* binding */ drawRoot),\n/* harmony export */   getAdditionalWidthBasedOnElementAndText: () => (/* binding */ getAdditionalWidthBasedOnElementAndText),\n/* harmony export */   removeRoot: () => (/* binding */ removeRoot),\n/* harmony export */   resizeRootCanvasAndContent: () => (/* binding */ resizeRootCanvasAndContent)\n/* harmony export */ });\nconst contextIsNullError = new Error(\"root canvas context is null\");\nfunction drawRoot(canvas) {\n    const width = canvas.width;\n    const height = canvas.height;\n    const ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n        throw contextIsNullError;\n    }\n    removeRoot(canvas);\n    canvas.style.display = \"block\";\n    ctx.beginPath();\n    ctx.moveTo(15, height * 0.5);\n    ctx.lineTo(45, height * 0.5);\n    ctx.lineTo(65, height);\n    ctx.lineTo(80, 5);\n    ctx.lineTo(width, 5);\n    ctx.stroke();\n}\nfunction removeRoot(canvas) {\n    canvas.style.display = \"none\";\n    const width = canvas.width;\n    const height = canvas.height;\n    const ctx = canvas.getContext(\"2d\");\n    if (!ctx) {\n        throw contextIsNullError;\n    }\n    ctx.clearRect(0, 0, width, height);\n}\nfunction getAdditionalWidthBasedOnElementAndText(element, content) {\n    const charWidthToHeightRatio = 0.55;\n    const contentLengt = content.length;\n    const fontSize = getFontSizeNumber(element);\n    const additionalWidth = charWidthToHeightRatio * fontSize * ((contentLengt || 1) - 1);\n    return additionalWidth;\n}\nfunction resizeRootCanvasAndContent(content, rootCanvas, additionalWidth) {\n    if (!rootCanvas.dataset.minWidth) {\n        throw new Error(\"you should specify 'data-min-width' attribute on canvas element\");\n    }\n    const minWidth = parseInt(rootCanvas.dataset.minWidth);\n    content.style.width = getFontSizeNumber(content) + additionalWidth + \"px\";\n    rootCanvas.width = minWidth + additionalWidth;\n    drawRoot(rootCanvas);\n}\nfunction getFontSizeNumber(element) {\n    const fontSizePx = getComputedStyle(element).fontSize;\n    const fontSizeNumber = parseInt(fontSizePx.slice(0, -2));\n    return fontSizeNumber;\n}\n\n\n//# sourceURL=webpack:///./src/rootCanvas.ts?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   drawRoot: () => (/* binding */ drawRoot),
+/* harmony export */   getAdditionalWidthBasedOnElementAndText: () => (/* binding */ getAdditionalWidthBasedOnElementAndText),
+/* harmony export */   removeRoot: () => (/* binding */ removeRoot),
+/* harmony export */   resizeRootCanvasAndContent: () => (/* binding */ resizeRootCanvasAndContent)
+/* harmony export */ });
+const contextIsNullError = new Error("root canvas context is null");
+function drawRoot(canvas) {
+    const width = canvas.width;
+    const height = canvas.height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+        throw contextIsNullError;
+    }
+    removeRoot(canvas);
+    canvas.style.display = "block";
+    ctx.beginPath();
+    ctx.moveTo(15, height * 0.5);
+    ctx.lineTo(45, height * 0.5);
+    ctx.lineTo(65, height);
+    ctx.lineTo(80, 5);
+    ctx.lineTo(width, 5);
+    ctx.stroke();
+}
+function removeRoot(canvas) {
+    canvas.style.display = "none";
+    const width = canvas.width;
+    const height = canvas.height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+        throw contextIsNullError;
+    }
+    ctx.clearRect(0, 0, width, height);
+}
+function getAdditionalWidthBasedOnElementAndText(element, content) {
+    const charWidthToHeightRatio = 0.55;
+    const contentLengt = content.length;
+    const fontSize = getFontSizeNumber(element);
+    const additionalWidth = charWidthToHeightRatio * fontSize * ((contentLengt || 1) - 1);
+    return additionalWidth;
+}
+function resizeRootCanvasAndContent(content, rootCanvas, additionalWidth) {
+    if (!rootCanvas.dataset.minWidth) {
+        throw new Error("you should specify 'data-min-width' attribute on canvas element");
+    }
+    const minWidth = parseInt(rootCanvas.dataset.minWidth);
+    content.style.width = getFontSizeNumber(content) + additionalWidth + "px";
+    rootCanvas.width = minWidth + additionalWidth;
+    drawRoot(rootCanvas);
+}
+function getFontSizeNumber(element) {
+    const fontSizePx = getComputedStyle(element).fontSize;
+    const fontSizeNumber = parseInt(fontSizePx.slice(0, -2));
+    return fontSizeNumber;
+}
+
 
 /***/ }),
 
@@ -66,7 +228,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   errorOutput: () => (/* binding */ errorOutput),\n/* harmony export */   indexInput: () => (/* binding */ indexInput),\n/* harmony export */   indexOutput: () => (/* binding */ indexOutput),\n/* harmony export */   inputRootCanvas: () => (/* binding */ inputRootCanvas),\n/* harmony export */   multiplierOutput: () => (/* binding */ multiplierOutput),\n/* harmony export */   outputRootCanvas: () => (/* binding */ outputRootCanvas),\n/* harmony export */   radicantInput: () => (/* binding */ radicantInput),\n/* harmony export */   radicantOutput: () => (/* binding */ radicantOutput)\n/* harmony export */ });\nconst inputRootCanvas = document.querySelector(\"#input-root-canvas\");\nconst outputRootCanvas = document.querySelector(\"#output-root-canvas\");\nconst indexInput = document.querySelector(\".index\");\nconst radicantInput = document.querySelector(\".radicant\");\nconst multiplierOutput = document.querySelector(\".multiplier-output\");\nconst errorOutput = document.querySelector(\".error-output\");\nconst indexOutput = document.querySelector(\".index.root-output\");\nconst radicantOutput = document.querySelector(\".radicant.root-output\");\n\n\n//# sourceURL=webpack:///./src/selectors.ts?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   errorOutput: () => (/* binding */ errorOutput),
+/* harmony export */   indexInput: () => (/* binding */ indexInput),
+/* harmony export */   indexOutput: () => (/* binding */ indexOutput),
+/* harmony export */   inputRootCanvas: () => (/* binding */ inputRootCanvas),
+/* harmony export */   multiplierOutput: () => (/* binding */ multiplierOutput),
+/* harmony export */   outputRootCanvas: () => (/* binding */ outputRootCanvas),
+/* harmony export */   radicantInput: () => (/* binding */ radicantInput),
+/* harmony export */   radicantOutput: () => (/* binding */ radicantOutput)
+/* harmony export */ });
+const inputRootCanvas = document.querySelector("#input-root-canvas");
+const outputRootCanvas = document.querySelector("#output-root-canvas");
+const indexInput = document.querySelector(".index");
+const radicantInput = document.querySelector(".radicant");
+const multiplierOutput = document.querySelector(".multiplier-output");
+const errorOutput = document.querySelector(".error-output");
+const indexOutput = document.querySelector(".index.root-output");
+const radicantOutput = document.querySelector(".radicant.root-output");
+
 
 /***/ })
 
@@ -126,11 +307,43 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.ts");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!**********************!*\
+  !*** ./src/index.ts ***!
+  \**********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors */ "./src/selectors.ts");
+/* harmony import */ var _rootCanvas__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rootCanvas */ "./src/rootCanvas.ts");
+/* harmony import */ var _helperFunctions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helperFunctions */ "./src/helperFunctions.ts");
+/* harmony import */ var _coreFunctions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coreFunctions */ "./src/coreFunctions.ts");
+
+
+
+
+(0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.drawRoot)(_selectors__WEBPACK_IMPORTED_MODULE_0__.inputRootCanvas);
+(0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.drawRoot)(_selectors__WEBPACK_IMPORTED_MODULE_0__.outputRootCanvas);
+_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput.addEventListener("keydown", e => {
+    setTimeout(() => {
+        (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_2__.limitInputLengh)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput, 8);
+        const additionalInputWidth = (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.getAdditionalWidthBasedOnElementAndText)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput, _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput.value);
+        (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.resizeRootCanvasAndContent)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantInput, _selectors__WEBPACK_IMPORTED_MODULE_0__.inputRootCanvas, additionalInputWidth);
+        (0,_coreFunctions__WEBPACK_IMPORTED_MODULE_3__.calculateAndWriteRoot)();
+        if (_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.textContent) {
+            const additionalOutputWidth = (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.getAdditionalWidthBasedOnElementAndText)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput, _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.textContent || "");
+            (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_1__.resizeRootCanvasAndContent)(_selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput, _selectors__WEBPACK_IMPORTED_MODULE_0__.outputRootCanvas, additionalOutputWidth);
+        }
+    }, 0);
+});
+_selectors__WEBPACK_IMPORTED_MODULE_0__.indexInput.addEventListener("keydown", e => {
+    setTimeout(() => {
+        (0,_coreFunctions__WEBPACK_IMPORTED_MODULE_3__.calculateAndWriteRoot)();
+    }, 0);
+});
+
+})();
+
 /******/ })()
 ;
+//# sourceMappingURL=bundle.js.map

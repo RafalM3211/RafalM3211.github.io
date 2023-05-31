@@ -1,5 +1,12 @@
+import {screen} from "@testing-library/dom";
+import "@testing-library/jest-dom"
+
 
 test('use jsdom in this test file', () => {
-    const element = document.createElement('div');
-    expect(element).not.toBeNull();
+    document.body.innerHTML=`
+      <div>affsd</div>
+    `
+
+    const a = screen.queryByText("affsd");
+    expect(a).toBeInTheDocument();
   });
