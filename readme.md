@@ -2,14 +2,14 @@
 
 Basic app for reducing roots to simplest form.
 
-## Running application
+### Running application
 
-```bash
+```
 npm run dev
 ```
 
-## Running tests
+### Running tests
 
-```bash
+```
 npm run test
 ```
