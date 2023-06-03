@@ -7,6 +7,7 @@ import {
   radicantInput
 } from "../selectors";
 import { calculateAndWriteRoot, writeRoot } from "../coreFunctions";
+import { fireEvent } from "@testing-library/dom";
 
 jest.mock("../rootCanvas");
 jest.mock("../selectors", ()=>{
@@ -20,8 +21,8 @@ test('calculates and outputs', async () => {
   //arrange
 
   //act
-  radicantInput.value="16";
-  indexInput.value="2"; 
+  fireEvent.change(radicantInput, {target: {value: "16"}});
+  fireEvent.change(indexInput, {target: {value: "2"}});
   calculateAndWriteRoot();
 
   //assert
