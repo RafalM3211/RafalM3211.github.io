@@ -21,8 +21,8 @@ export function shouldDrawRootSymbol(root: Root){
 }
 
 export function clearRootValues(){
-    indexOutput.innerText="";
-    radicantOutput.innerText="";
+    indexOutput.textContent="";
+    radicantOutput.textContent="";
     multiplierOutput.innerHTML="";
 }
 

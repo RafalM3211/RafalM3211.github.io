@@ -89,13 +89,13 @@ function writeRoot(canvas, root) {
         root.multiplier = root.radicant;
     if ((0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.shouldDrawRootSymbol)(root)) {
         (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_2__.drawRoot)(canvas);
-        _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.innerText = root.index + "";
-        _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.innerText = root.radicant + "";
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.textContent = root.index + "";
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.textContent = root.radicant + "";
     }
     else {
         (0,_rootCanvas__WEBPACK_IMPORTED_MODULE_2__.removeRoot)(canvas);
-        _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.innerText = "";
-        _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.innerText = "";
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.textContent = "";
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.textContent = "";
     }
     if (root.multiplier === 1) {
         _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? root.radicant + "" : "";
@@ -137,8 +137,8 @@ function shouldDrawRootSymbol(root) {
     return !(root.index === 1 || Math.abs(root.radicant) === 1);
 }
 function clearRootValues() {
-    _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.innerText = "";
-    _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.innerText = "";
+    _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.textContent = "";
+    _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.textContent = "";
     _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = "";
 }
 function writeError(exception) {

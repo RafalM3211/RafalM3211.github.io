@@ -15,7 +15,6 @@ import {
 } from "./helperFunctions";
 import type { Root, HTMLRootCanvasElement } from "./types";
 
-
 export function calculateAndWriteRoot(){
     try {
         const {index, radicant}=getIndexAndRadicant();
@@ -37,13 +36,13 @@ function writeRoot(canvas: HTMLRootCanvasElement, root: Root){
 
     if(shouldDrawRootSymbol(root)) {
         drawRoot(canvas);
-        indexOutput.innerText=root.index+"";
-        radicantOutput.innerText=root.radicant+"";
+        indexOutput.textContent=root.index+"";
+        radicantOutput.textContent=root.radicant+"";
     }
     else {
         removeRoot(canvas);
-        indexOutput.innerText="";
-        radicantOutput.innerText="";
+        indexOutput.textContent="";
+        radicantOutput.textContent="";
     }
 
     if(root.multiplier===1){
