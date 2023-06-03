@@ -1,4 +1,5 @@
 import {screen} from "@testing-library/dom";
+import type { HTMLRootCanvasElement } from "../types";
 
 export function renderCalculator(){
     document.body.innerHTML=`
@@ -34,4 +35,29 @@ export function getOutputs(){
     const indexOutput=screen.getByTestId("index-output") as HTMLParagraphElement;
     const radicantOutput=screen.getByTestId("radicant-output") as HTMLParagraphElement;
     return {multiplierOutput, errorOutput, indexOutput, radicantOutput};
+}
+
+export function mockSelectors(){
+  const input=document.createElement("input");
+  input.type="number";
+  input.value="2";
+
+  return {
+    multiplierOutput: document.createElement("p"),
+    indexOutput: document.createElement("p"),
+    radicantOutput: document.createElement("p"), 
+    errorOutput: document.createElement("p"),
+    indexInput: input,
+    radicantInput: input.cloneNode(true) as HTMLInputElement,
+    outputRootCanvas: mockCanvas(),
+  }
+}
+  
+export function mockCanvas(): HTMLRootCanvasElement{
+  const canvas=document.createElement("canvas");
+  canvas.width=150;
+  canvas.height=100;
+  canvas.dataset.minWidth="150";
+
+  return canvas as HTMLRootCanvasElement;
 }

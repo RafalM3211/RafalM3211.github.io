@@ -31,7 +31,7 @@ export function calculateAndWriteRoot(){
     }
 }
 
-function writeRoot(canvas: HTMLRootCanvasElement, root: Root){
+export function writeRoot(canvas: HTMLRootCanvasElement, root: Root){
     if(root.index===1) root.multiplier=root.radicant;
 
     if(shouldDrawRootSymbol(root)) {
@@ -46,12 +46,13 @@ function writeRoot(canvas: HTMLRootCanvasElement, root: Root){
     }
 
     if(root.multiplier===1){
-        multiplierOutput.innerHTML=(root.radicant===1||root.radicant===0)? root.radicant+"":"";
+        
+        multiplierOutput.textContent=(root.radicant===1||root.radicant===0)? root.radicant+"":"";
     }
     else if(root.multiplier===-1){
-        multiplierOutput.innerHTML=(root.radicant===1||root.radicant===0)? "-"+root.radicant:"-";
+        multiplierOutput.textContent=(root.radicant===1||root.radicant===0)? "-"+root.radicant:"-";
     }
     else{
-        multiplierOutput.innerHTML=root.multiplier+"";
+        multiplierOutput.textContent=root.multiplier+"";
     }    
 }

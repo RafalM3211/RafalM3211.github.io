@@ -59,7 +59,8 @@ function isEven(number) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   calculateAndWriteRoot: () => (/* binding */ calculateAndWriteRoot)
+/* harmony export */   calculateAndWriteRoot: () => (/* binding */ calculateAndWriteRoot),
+/* harmony export */   writeRoot: () => (/* binding */ writeRoot)
 /* harmony export */ });
 /* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors */ "./src/selectors.ts");
 /* harmony import */ var _calculator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calculator */ "./src/calculator.ts");
@@ -98,13 +99,13 @@ function writeRoot(canvas, root) {
         _selectors__WEBPACK_IMPORTED_MODULE_0__.radicantOutput.textContent = "";
     }
     if (root.multiplier === 1) {
-        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? root.radicant + "" : "";
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.textContent = (root.radicant === 1 || root.radicant === 0) ? root.radicant + "" : "";
     }
     else if (root.multiplier === -1) {
-        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = (root.radicant === 1 || root.radicant === 0) ? "-" + root.radicant : "-";
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.textContent = (root.radicant === 1 || root.radicant === 0) ? "-" + root.radicant : "-";
     }
     else {
-        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.innerHTML = root.multiplier + "";
+        _selectors__WEBPACK_IMPORTED_MODULE_0__.multiplierOutput.textContent = root.multiplier + "";
     }
 }
 
