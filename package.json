@@ -20,6 +20,8 @@
     "test": "jest --watch"
   },
   "devDependencies": {
+    "@testing-library/user-event": "^14.4.3",
+    "canvas": "^2.11.2",
     "webpack-cli": "^5.1.1"
   }
 }
