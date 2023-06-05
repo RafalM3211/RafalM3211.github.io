@@ -18,7 +18,7 @@
     "build": "webpack --watch",
     "dev": "npm-run-all -p server build",
     "test": "jest --watch",
-    "deploy": "node ./scripts/deploy.js"
+    "deploy": "ts-node ./scripts/deploy.ts"
   },
   "devDependencies": {
     "@testing-library/user-event": "^14.4.3",
