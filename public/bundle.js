@@ -135,7 +135,7 @@ function getIndexAndRadicant() {
     return { index, radicant };
 }
 function shouldDrawRootSymbol(root) {
-    return !(root.index === 1 || Math.abs(root.radicant) === 1);
+    return !(root.index === 1 || Math.abs(root.radicant) === 1 || root.radicant === 0);
 }
 function clearRootValues() {
     _selectors__WEBPACK_IMPORTED_MODULE_0__.indexOutput.textContent = "";
