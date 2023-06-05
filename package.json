@@ -17,11 +17,13 @@
     "server": "http-server",
     "build": "webpack --watch",
     "dev": "npm-run-all -p server build",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "deploy": "node ./scripts/deploy.js"
   },
   "devDependencies": {
     "@testing-library/user-event": "^14.4.3",
     "canvas": "^2.11.2",
+    "gh-pages": "^5.0.0",
     "webpack-cli": "^5.1.1"
   }
 }
